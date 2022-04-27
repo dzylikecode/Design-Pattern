@@ -39,10 +39,19 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css"
     />
+    <!-- mermaid -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
+    />
+    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </head>
   <body>
     <div id="app"></div>
     <script>
+      var num = 0;
+      mermaid.initialize({ startOnLoad: false });
+
       window.$docsify = {
         name: "Tree", // 目录的标题
         repo: "https://github.com/dzylikecode/Design-Pattern", // 右上角的挂件
@@ -53,6 +62,20 @@
           markmap: {
             preset: "colorful", // or default
             linkShape: "diagonal", // or bracket
+          },
+        },
+        markdown: {
+          renderer: {
+            code: function (code, lang) {
+              if (lang === "mermaid") {
+                return (
+                  '<div class="mermaid">' +
+                  mermaid.render("mermaid-svg-" + num++, code) +
+                  "</div>"
+                );
+              }
+              return this.origin.code.apply(this, arguments);
+            },
           },
         },
       };

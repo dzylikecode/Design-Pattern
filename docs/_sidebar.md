@@ -1,4 +1,5 @@
 - [首页](README.md)
 - GoF
-  - [绪论](GOF/README.md)
-  - [概述](GOF/ch01-intro/README.md)
+  - [绪论](GoF/README.md)
+  - [概述](GoF/ch01-intro/README.md)
+  - [Lexi 实验](GoF/ch02-example/README.md)
